@@ -1,0 +1,8 @@
+[
+  { "id": "sun", "name": "선케어", "hashtags": ["sunscreen", "uvblock"] },
+  { "id": "serum", "name": "세럼", "hashtags": ["serum"] },
+  { "id": "moist", "name": "보습", "hashtags": ["moisturizer", "moisturiser"] },
+  { "id": "aging", "name": "안티에이징", "hashtags": ["antiaging"] },
+  { "id": "acne", "name": "트러블케어", "hashtags": ["acne"] },
+  { "id": "exfo", "name": "각질케어", "hashtags": ["exfoliation"] }
+]

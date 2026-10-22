@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>리스닝 보드 · 케이시크릿 숏폼 Beauty trend analysis</title>
+  <link rel="icon" type="image/png" href="assets/ksecret-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+  <script type="module" src="listening.js"></script>
+</head>
+<body>
+  <div id="shell"></div>
+  <main class="wrap page">
+    <div id="banner" class="banner" role="note" hidden></div>
+    <div class="page-head">
+      <div>
+        <h1>리스닝 보드</h1>
+        <p>자동 감지된 급상승 해시태그와 내가 정한 주제의 TikTok 전체 증가 추이. 증가량은 누적 조회수·영상 수의 일간 차이예요.</p>
+      </div>
+    </div>
+
+    <section class="card">
+      <div class="card-head"><h2>자동 감지 급상승 추적</h2><p class="hint">발견 엔진이 추적에 올린 태그 · 7일 성장이 기준선보다 빠른 순</p></div>
+      <div id="auto" class="table-wrap"></div>
+    </section>
+
+    <section class="filters" aria-label="내 주제 필터">
+      <fieldset class="seg"><legend>기간</legend>
+        <label><input id="r30" type="radio" name="range" value="30"><span>30일</span></label>
+        <label><input id="r60" type="radio" name="range" value="60" checked><span>60일</span></label>
+        <label><input id="r90" type="radio" name="range" value="90"><span>90일</span></label>
+      </fieldset>
+      <fieldset class="seg"><legend>단위</legend>
+        <label><input id="uday" type="radio" name="unit" value="day"><span>일</span></label>
+        <label><input id="uweek" type="radio" name="unit" value="week" checked><span>주</span></label>
+      </fieldset>
+      <fieldset class="seg"><legend>지표</legend>
+        <label><input id="mviews" type="radio" name="metric" value="views" checked><span>조회수 증가</span></label>
+        <label><input id="mvideos" type="radio" name="metric" value="videos"><span>신규 영상</span></label>
+      </fieldset>
+    </section>
+
+    <section class="kpis" id="kpis" aria-label="내 주제 요약"></section>
+
+    <div class="grid-2">
+      <section class="card">
+        <div class="card-head"><h2 id="chartTitle">내 주제 추이</h2><p class="hint">주 단위는 7일이 다 찬 주만 표시</p></div>
+        <div class="chart-wrap"><canvas id="chart" role="img" aria-label="내 주제별 추이 그래프"></canvas></div>
+      </section>
+      <section class="card">
+        <div class="card-head"><h2>내 주제 순위</h2><button id="csv" class="btn" type="button">CSV</button></div>
+        <div id="rows" class="table-wrap"></div>
+        <p class="hint">체크를 끄면 그래프에서 숨겨요. 주제 편집: <code>site/data/topics.json</code></p>
+      </section>
+    </div>
+  </main>
+  <footer class="wrap foot">출처: EnsembleData(TikTok 해시태그 누적 집계). 수집이 빠진 날은 앞뒤 값으로 균등 분배합니다.</footer>
+</body>
+</html>

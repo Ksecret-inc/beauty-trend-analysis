@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>업계 인사이트 · 케이시크릿 숏폼 Beauty trend analysis</title>
+  <link rel="icon" type="image/png" href="assets/ksecret-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+  <script type="module" src="industry.js"></script>
+</head>
+<body>
+  <div id="shell"></div>
+  <main class="wrap page">
+    <div id="banner" class="banner" role="note" hidden></div>
+    <div class="page-head">
+      <div>
+        <h1>업계 인사이트 · 뷰티</h1>
+        <p>뷰티 세부 카테고리별 표본 규모, 지난주 대비 변화, 미국 비중과 카테고리 안에서 뜨는 해시태그.</p>
+      </div>
+      <fieldset class="seg"><legend>지표</legend>
+        <label><input id="mPosts" type="radio" name="metric" value="posts" checked><span>영상 수</span></label>
+        <label><input id="mPlays" type="radio" name="metric" value="plays"><span>조회수</span></label>
+      </fieldset>
+    </div>
+
+    <section class="kpis eight" id="kpis" aria-label="카테고리 요약"></section>
+
+    <div class="grid-2">
+      <section class="card">
+        <div class="card-head"><h2>카테고리 점유율: 이번 주 vs 지난주</h2><p class="hint">표본 기준, 최근 7일과 그 전 7일</p></div>
+        <div class="chart-wrap"><canvas id="share" role="img" aria-label="카테고리별 이번 주와 지난주 점유율 막대그래프"></canvas></div>
+      </section>
+      <section class="card">
+        <div class="card-head"><h2>카테고리 순위</h2><button id="csv" class="btn" type="button">CSV</button></div>
+        <div id="catTable" class="table-wrap"></div>
+      </section>
+    </div>
+
+    <section class="card">
+      <div class="card-head"><h2>카테고리별 급상승 해시태그</h2><p class="hint">각 카테고리 상위 4개 · 클릭하면 상세</p></div>
+      <div id="catTags" class="grid-cards"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>표본에 자주 등장한 크리에이터</h2><p class="hint">오늘 표본에서 해시태그별 인기 영상 상위 5위 안에 든 횟수</p></div>
+      <div id="creators" class="table-wrap"></div>
+    </section>
+  </main>
+  <footer class="wrap foot">카테고리는 표본을 모은 검색어 기준이에요(예: "perfume" 검색 → 향수). 한 영상이 여러 검색어에 걸리면 각 카테고리에 한 번씩 셉니다.</footer>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>케이시크릿 숏폼 Beauty trend analysis</title>
+  <link rel="icon" type="image/png" href="assets/ksecret-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="trends.js"></script>
+</head>
+<body>
+  <div id="shell"></div>
+  <main class="wrap page">
+    <div id="banner" class="banner" role="note" hidden></div>
+
+    <div class="page-head">
+      <div>
+        <h1>트렌드</h1>
+        <p>최근 24시간 뷰티 인기 영상 표본에서 새로 등장하거나 급증한 해시태그·키워드. 최근 3일 등장량을 이전 14일과 비교하고, 미국 비중으로 가중해요.</p>
+      </div>
+    </div>
+
+    <section class="kpis" id="kpis" aria-label="요약"></section>
+
+    <section class="filters" aria-label="필터">
+      <fieldset class="seg"><legend>대상</legend>
+        <label><input id="tTags" type="radio" name="target" value="tags" checked><span>해시태그</span></label>
+        <label><input id="tKw" type="radio" name="target" value="keywords"><span>키워드</span></label>
+      </fieldset>
+      <fieldset class="seg"><legend>지역 가중</legend>
+        <label><input id="gUs" type="radio" name="geo" value="us" checked><span>미국 우선</span></label>
+        <label><input id="gAll" type="radio" name="geo" value="all"><span>전 세계</span></label>
+      </fieldset>
+      <fieldset class="seg"><legend>규모</legend>
+        <label><input id="sAll" type="radio" name="size" value="" checked><span>전체</span></label>
+        <label><input id="sS" type="radio" name="size" value="소형"><span>소형</span></label>
+        <label><input id="sM" type="radio" name="size" value="중형"><span>중형</span></label>
+        <label><input id="sL" type="radio" name="size" value="대형"><span>대형</span></label>
+      </fieldset>
+      <label for="cat" class="sr">카테고리</label>
+      <select id="cat" class="select"><option value="">모든 카테고리</option></select>
+      <label class="check"><input id="onlyNew" type="checkbox"> 신규만</label>
+    </section>
+
+    <div class="grid-2">
+      <section class="card">
+        <div class="card-head">
+          <h2 id="rankTitle">급상승 해시태그</h2>
+          <button id="csv" class="btn" type="button">CSV</button>
+        </div>
+        <div id="rank" class="table-wrap"></div>
+        <p class="hint">모멘텀 = 최근 3일 평균 등장 ÷ 이전 14일 평균. 크리에이터 = 하루 최대 등장 계정 수(한 계정 도배 방지). 7일 성장 = TikTok 전체 누적 영상 수 증가율(추적 중인 태그만).</p>
+      </section>
+      <section class="card">
+        <div class="card-head">
+          <h2>기준선</h2>
+          <p class="hint">대형 검색어 태그의 7일 성장</p>
+        </div>
+        <div id="baseline" class="table-wrap"></div>
+        <p class="hint">급상승 태그의 "기준선 대비"는 이 표의 중앙값과 비교한 배수예요.</p>
+      </section>
+    </div>
+  </main>
+  <footer class="wrap foot">출처: EnsembleData(TikTok 공개 검색·해시태그 집계). 표본은 매일 06:00 KST에 뷰티 키워드 24개로 미국 5페이지·전 세계 2페이지를 검색해 만듭니다.</footer>
+</body>
+</html>

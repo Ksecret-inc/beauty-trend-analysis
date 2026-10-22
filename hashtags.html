@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>해시태그 탐색 · 케이시크릿 숏폼 Beauty trend analysis</title>
+  <link rel="icon" type="image/png" href="assets/ksecret-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+  <script type="module" src="hashtags.js"></script>
+</head>
+<body>
+  <div id="shell"></div>
+  <main class="wrap page">
+    <div id="banner" class="banner" role="note" hidden></div>
+    <div class="page-head">
+      <div>
+        <h1>해시태그 탐색</h1>
+        <p>표본에서 발견했거나 추적 중인 해시태그를 찾아보고, 규모·성장·인기 영상·함께 쓰인 태그를 확인해요.</p>
+      </div>
+    </div>
+
+    <div class="grid-2" style="grid-template-columns: minmax(0, 320px) minmax(0, 1fr)">
+      <section class="card" aria-label="해시태그 목록">
+        <label for="q" class="sr">해시태그 검색</label>
+        <input id="q" class="search" type="search" placeholder="해시태그 검색 (예: serum)" autocomplete="off">
+        <div class="filters" style="margin-block: 10px">
+          <fieldset class="seg"><legend>목록</legend>
+            <label><input id="lTracked" type="radio" name="list" value="tracked" checked><span>추적 중</span></label>
+            <label><input id="lAll" type="radio" name="list" value="all"><span>표본 전체</span></label>
+          </fieldset>
+          <label for="sort" class="sr">정렬</label>
+          <select id="sort" class="select">
+            <option value="growth">7일 성장순</option>
+            <option value="recent">최근 등장순</option>
+            <option value="size">규모순</option>
+            <option value="name">이름순</option>
+          </select>
+        </div>
+        <p id="count" class="hint"></p>
+        <ul id="list" class="list"></ul>
+      </section>
+
+      <section id="detail" class="card" aria-live="polite"></section>
+    </div>
+  </main>
+  <footer class="wrap foot">출처: EnsembleData(TikTok 공개 검색·해시태그 집계). 누적 합계는 추적 중인 태그만 매일 수집합니다.</footer>
+</body>
+</html>
